@@ -20,11 +20,11 @@ find_path(BOX_2D_INCLUDE_DIR
             ${BOX2D_PATH}
         )
 
-find_library(SDL2_IMAGE_LIBRARY
-        NAMES SDL2_image
+find_library(BOX2D_LIBRARY
+        NAMES box2d
         PATH_SUFFIXES bin/Debug build/bin/Debug # TODO handle debug/release
         PATHS ${BOX2D_PATH}
         )
 
-mark_as_advanced(SDL2_IMAGE_LIBRARY SDL2_IMAGE_INCLUDE_DIR)
+mark_as_advanced(BOX_2D_INCLUDE_DIR BOX2D_LIBRARY)
 message("</FindBox2D.cmake>")

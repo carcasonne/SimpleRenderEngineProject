@@ -45,7 +45,7 @@ get_directory_property(SRE_LIBRARIES_SHARED DIRECTORY submodules/SimpleRenderEng
 include_directories(${SRE_INCLUDE})
 
 # prepare static library list
-set(SGE_LIBRARIES SRE ${SRE_LIBRARIES} ${SDL2MIXER_LIBRARY})
+set(SGE_LIBRARIES SRE ${SRE_LIBRARIES} ${SDL2MIXER_LIBRARY} ${BOX2D_LIBRARY})
 
 # prepare dynamic library list
 set(SGE_LIBRARIES_SHARED ${SRE_LIBRARIES_SHARED} ${SDL2_MIXER_SHARED_LIBS})
