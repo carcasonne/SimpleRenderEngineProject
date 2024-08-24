@@ -17,11 +17,20 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+# build sre library
+add_subdirectory(submodules/SimpleRenderEngine)
+get_directory_property(SRE_INCLUDE DIRECTORY submodules/SimpleRenderEngine DEFINITION SRE_INCLUDE)
+get_directory_property(SRE_LIBRARIES DIRECTORY submodules/SimpleRenderEngine DEFINITION SRE_LIBRARIES)
+get_directory_property(SRE_LIBRARIES_SHARED DIRECTORY submodules/SimpleRenderEngine DEFINITION SRE_LIBRARIES_SHARED)
+
+
+# custom, centralized path to dependencies
+# set(SGE_LIBS_PATH "" CACHE PATH "Path to the SimpleGameEngine libraries")
+set(SGE_LIBS_PATH ${SRE_LIBS_PATH})
+
 # where to look for cmake "find" modules
 set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-# custom, centralized path to dependencies
-set(SGE_LIBS_PATH "" CACHE PATH "Path to the SimpleGameEngine libraries")
 
 ############################################################################
 # Collect SGE libraries
@@ -42,13 +51,6 @@ include_directories(${LUA_INCLUDE_DIR})
 
 # 3rd party, head only libraries
 include_directories(3rdparty)
-
-# build sre library
-add_subdirectory(submodules/SimpleRenderEngine)
-get_directory_property(SRE_INCLUDE DIRECTORY submodules/SimpleRenderEngine DEFINITION SRE_INCLUDE)
-get_directory_property(SRE_LIBRARIES DIRECTORY submodules/SimpleRenderEngine DEFINITION SRE_LIBRARIES)
-get_directory_property(SRE_LIBRARIES_SHARED DIRECTORY submodules/SimpleRenderEngine DEFINITION SRE_LIBRARIES_SHARED)
-
 
 
 include_directories(${SRE_INCLUDE})
