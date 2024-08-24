@@ -9,35 +9,14 @@ For more information about SimpleRenderEngine see:
 
 https://github.com/mortennobel/SimpleRenderEngine
 
-# Setup OSX
+# Setup
+- open the fodler in VisualStudio
+- select `Manage Configurations` in the configuration list
+![cmake_settings](media/cmake_settings.png)
+- check that the current architecture matches your current system. **NB: only x64 supported at this time!**
+![target_architecture](media/target_architecture.png)
+- set the `SRE_LIBS_PATH` variable to the path containing the project's dependencies.
+![srep_libs](media/srep_libs.png)
 
-## SDL
-Download the most recent Development Libraries for macOS from https://www.libsdl.org/download-2.0.php
-Open the dmg and copy the SDL2.framework to /Library/Frameworks 
-
-## SDL_image
-
-Download the most recent Development Libraries for macOS from https://www.libsdl.org/projects/SDL_image/
-Open the dmg and copy the SDL2_image.framework to /Library/Frameworks 
-
-## SDL_mixer
-
-Download the most recent Development Libraries for macOS from https://www.libsdl.org/projects/SDL_mixer/
-Open the dmg and copy the SDL2_mixer.framework to /Library/Frameworks 
-
-## Run CMake to setup project 
-
-CMake should now be able to configure your project fully using CMake with default values.
-
-# Setup Windows (Visual Studio 2017)
-
-Every dependency is included. Run CMake and use the default options to generate the project files.
-Use x86 (64-bit is currently unsupported).
-
-# Setup Linux
-
-* sudo apt-get install libsdl2-dev
-* sudo apt-get install libsdl2-image-dev
-* sudo apt-get install libsdl2-mixer-dev
-* sudo apt-get install libglew-dev
-* sudo apt-get install lua5.3-dev
+# Current Known Limitations
+- only Windows x64 supported at the time
