@@ -12,6 +12,8 @@ bin/
 *.suo
 *.user
 *.sln.docstates
+.vs
+CMakeSettings.json
 
 # Build results
 
