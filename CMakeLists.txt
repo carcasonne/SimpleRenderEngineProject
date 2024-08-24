@@ -35,6 +35,14 @@ include_directories(${SDL2MIXER_INCLUDE_DIR})
 find_package(Box2D)
 include_directories(${BOX_2D_INCLUDE_DIR})
 
+
+# lua
+find_package(lua)
+include_directories(${LUA_INCLUDE_DIR})
+
+# 3rd party, head only libraries
+include_directories(3rdparty)
+
 # build sre library
 add_subdirectory(submodules/SimpleRenderEngine)
 get_directory_property(SRE_INCLUDE DIRECTORY submodules/SimpleRenderEngine DEFINITION SRE_INCLUDE)
@@ -42,15 +50,16 @@ get_directory_property(SRE_LIBRARIES DIRECTORY submodules/SimpleRenderEngine DEF
 get_directory_property(SRE_LIBRARIES_SHARED DIRECTORY submodules/SimpleRenderEngine DEFINITION SRE_LIBRARIES_SHARED)
 
 
+
 include_directories(${SRE_INCLUDE})
 
 # prepare static library list
-set(SGE_LIBRARIES SRE ${SRE_LIBRARIES} ${SDL2MIXER_LIBRARY} ${BOX2D_LIBRARY})
+set(SGE_LIBRARIES SRE ${SRE_LIBRARIES} ${SDL2MIXER_LIBRARY} ${BOX2D_LIBRARY} ${LUA_LIBRARY})
 
 # prepare dynamic library list
-set(SGE_LIBRARIES_SHARED ${SRE_LIBRARIES_SHARED} ${SDL2_MIXER_SHARED_LIBS})
+set(SGE_LIBRARIES_SHARED ${SRE_LIBRARIES_SHARED} ${SDL2_MIXER_SHARED_LIBS} ${LUA_LIBRARY_SHARED})
 
-
+message("424241: ${SRE_INCLUDE}")
 message("424242: ${SGE_LIBRARIES}")
 message("424243: ${SGE_LIBRARIES_SHARED}")
 
