@@ -28,7 +28,7 @@ public:
         DrawPolygon(vertices, vertexCount, color);
     }
 
-    void DrawCircle(const b2Vec2 &center, float32 radius, const b2Color &color) override {
+    void DrawCircle(const b2Vec2 &center, float radius, const b2Color &color) override {
         glm::vec3 c {center.x,center.y,0};
         for (int i=0;i<16;i++){
             float v = i*glm::two_pi<float>()/16;
@@ -38,7 +38,7 @@ public:
         }
     }
 
-    void DrawSolidCircle(const b2Vec2 &center, float32 radius, const b2Vec2 &axis, const b2Color &color) override {
+    void DrawSolidCircle(const b2Vec2 &center, float radius, const b2Vec2 &axis, const b2Color &color) override {
         DrawCircle(center, radius, color);
     }
 
@@ -49,7 +49,7 @@ public:
 
     void DrawTransform(const b2Transform &xf) override {}
 
-    void DrawPoint(const b2Vec2 &p, float32 size, const b2Color &color) override {}
+    void DrawPoint(const b2Vec2 &p, float size, const b2Color &color) override {}
 
     void clear(){
         lines.clear();
@@ -129,7 +129,7 @@ public:
         renderPass.draw(sb);
 
         // debug draw
-        m_world.DrawDebugData();
+        m_world.DebugDraw();
         renderPass.drawLines(debugDraw.getLines(),{0,0,0,1});
         debugDraw.clear();
     }

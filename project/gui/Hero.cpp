@@ -112,7 +112,7 @@ void Hero::guiSpeechBubble(){
     auto cond = ImGuiCond_Always;
     ImGui::SetNextWindowPos(pos, cond);
     ImGui::SetNextWindowSize(popupSize, cond);
-    ImGui::Begin("", open, flags);
+    ImGui::Begin("speech_bubble", open, flags);
     // Use custom font
     ImGui::PushFont(ProggyTiny);
     ImGui::Text(message.c_str());
@@ -142,7 +142,9 @@ void Hero::guiGameInfo() {
     // draw health
     ImGui::Text("Health");
     float width = heartSize.x*3;
-    float windowWidth = ImGui::GetWindowContentRegionWidth();
+    ImVec2 window_min = ImGui::GetWindowContentRegionMin();
+    ImVec2 window_max = ImGui::GetWindowContentRegionMax();
+    float windowWidth = window_max.x - window_min.x;
     ImVec2 uv0(0,1); // flip y axis coordinates
     ImVec2 uv1(1,0);
     for (int i=0;i<3;i++){

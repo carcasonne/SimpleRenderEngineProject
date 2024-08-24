@@ -4,7 +4,7 @@
 #include "sre/RenderPass.hpp"
 #include "sre/Texture.hpp"
 #include "SpriteComponent.hpp"
-#include "Box2D/Dynamics/Contacts/b2Contact.h"
+#include "box2D/box2d.h"
 #include "PhysicsComponent.hpp"
 #include "CharacterController.hpp"
 #include "BirdMovementComponent.hpp"
@@ -164,7 +164,7 @@ void PlatformerGame::render() {
     rp.draw(sb);
 
     if (doDebugDraw){
-        world->DrawDebugData();
+        world->DebugDraw();
         rp.drawLines(debugDraw.getLines());
         debugDraw.clear();
     }

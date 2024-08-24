@@ -65,7 +65,8 @@ void PhysicsComponent::initCircle(b2BodyType type, float radius, glm::vec2 cente
     circle = new b2CircleShape();
     circle->m_radius = radius;
     b2FixtureDef fxD;
-    fxD.userData = (void*)"Circle";
+    fxD.userData = b2FixtureUserData();
+    fxD.userData.pointer = (uintptr_t)"Circle";
     fxD.shape = circle;
     fxD.density = density;
     fixture = body->CreateFixture(&fxD);
@@ -86,7 +87,8 @@ void PhysicsComponent::initBox(b2BodyType type, glm::vec2 size, glm::vec2 center
     polygon = new b2PolygonShape();
     polygon->SetAsBox(size.x, size.y, {0,0}, 0);
     b2FixtureDef fxD;
-    fxD.userData = (void*)"Box";
+    fxD.userData = b2FixtureUserData();
+    fxD.userData.pointer = (uintptr_t)"Box";
     fxD.shape = polygon;
     fxD.density = density;
     fixture = body->CreateFixture(&fxD);

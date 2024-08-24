@@ -48,7 +48,6 @@ IF (WIN32)
 	file(COPY ${SGE_LIBRARIES_SHARED} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 ENDIF(WIN32)
 
-add_subdirectory(Box2DTestbed)
 add_subdirectory(platformer)
 add_subdirectory(particle_system)
 add_subdirectory(gui)

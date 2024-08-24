@@ -25,7 +25,7 @@ void Box2DDebugDraw::DrawSolidPolygon(const b2Vec2 *vertices, int32 vertexCount,
     DrawPolygon(vertices, vertexCount, color);
 }
 
-void Box2DDebugDraw::DrawCircle(const b2Vec2 &center, float32 radius, const b2Color &color) {
+void Box2DDebugDraw::DrawCircle(const b2Vec2 &center, float radius, const b2Color &color) {
     glm::vec3 c {center.x*scale,center.y * scale,0};
     for (int i=0;i<16;i++){
         float v = i*glm::two_pi<float>()/16;
@@ -35,7 +35,7 @@ void Box2DDebugDraw::DrawCircle(const b2Vec2 &center, float32 radius, const b2Co
     }
 }
 
-void Box2DDebugDraw::DrawSolidCircle(const b2Vec2 &center, float32 radius, const b2Vec2 &axis, const b2Color &color) {
+void Box2DDebugDraw::DrawSolidCircle(const b2Vec2 &center, float radius, const b2Vec2 &axis, const b2Color &color) {
     DrawCircle(center, radius, color);
 }
 
@@ -46,7 +46,7 @@ void Box2DDebugDraw::DrawSegment(const b2Vec2 &p1, const b2Vec2 &p2, const b2Col
 
 void Box2DDebugDraw::DrawTransform(const b2Transform &xf) {}
 
-void Box2DDebugDraw::DrawPoint(const b2Vec2 &p, float32 size, const b2Color &color) {}
+void Box2DDebugDraw::DrawPoint(const b2Vec2 &p, float size, const b2Color &color) {}
 
 void Box2DDebugDraw::clear() {
     lines.clear();

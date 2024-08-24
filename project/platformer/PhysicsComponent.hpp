@@ -1,9 +1,6 @@
 #pragma once
 
-#include "Box2D/Common/b2Math.h"
-#include "Box2D/Collision/Shapes/b2PolygonShape.h"
-#include "Box2D/Collision/Shapes/b2CircleShape.h"
-#include "Box2D/Dynamics/b2Body.h"
+#include "box2d/box2d.h"
 #include "Component.hpp"
 
 class PhysicsComponent : public Component {

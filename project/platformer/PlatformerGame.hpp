@@ -1,7 +1,7 @@
 #include "sre/SDLRenderer.hpp"
 #include "sre/SpriteAtlas.hpp"
 #include <vector>
-#include "Box2D/Dynamics/b2World.h"
+#include "box2d/box2d.h"
 #include "GameObject.hpp"
 #include "SideScrollingCamera.hpp"
 #include "Box2DDebugDraw.hpp"
@@ -29,7 +29,7 @@ public:
 
     static PlatformerGame* instance;
 
-    static constexpr float32 timeStep = 1.0f / 60.0f;
+    static constexpr float timeStep = 1.0f / 60.0f;
 private:
     sre::SDLRenderer r;
 

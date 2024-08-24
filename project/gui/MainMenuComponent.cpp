@@ -42,7 +42,7 @@ void MainMenuComponent::onGui() {
     auto cond = ImGuiCond_Always;
     ImGui::SetNextWindowPos(pos, cond);
     ImGui::SetNextWindowSize(iWinSize, cond);
-    ImGui::Begin("", open, flags);
+    ImGui::Begin("main_menu", open, flags);
 
     // load textures
     static auto playTex = Texture::create()
@@ -61,10 +61,10 @@ void MainMenuComponent::onGui() {
     ImVec2 uv1(1,0);
 
     // Render buttons
-    if (ImGui::ImageButton(playId, imageButtonSize, uv0, uv1)){
+    if (ImGui::ImageButton("btn_play", playId, imageButtonSize, uv0, uv1)) {
         playPressed();
     }
-    if (ImGui::ImageButton(settingsId, imageButtonSize, uv0, uv1)){
+    if (ImGui::ImageButton("btn_play", settingsId, imageButtonSize, uv0, uv1)){
         settingsPressed();
     }
     ImGui::End();
