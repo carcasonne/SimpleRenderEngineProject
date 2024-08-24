@@ -29,6 +29,9 @@
 #  License text for the above reference.)
 
 message("<FindSDL2_mixer.cmake>")
+
+set(SDL2_MIXER_PATH "${SGE_LIBS_PATH}/sdl2_mixer")
+
 FIND_PATH(SDL2MIXER_INCLUDE_DIR SDL_mixer.h
         HINTS
         $ENV{SDL2MIXERDIR}
@@ -43,14 +46,22 @@ FIND_PATH(SDL2MIXER_INCLUDE_DIR SDL_mixer.h
         /opt/local/include/SDL2 # DarwinPorts
         /opt/csw/include/SDL2 # Blastwave
         /opt/include/SDL2
+        ${SDL2_MIXER_PATH}
         )
+
+# TODO find a more robust way to check for x86/x64
+if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+  set(VC_LIB_PATH_SUFFIX lib/x64)
+else()
+  set(VC_LIB_PATH_SUFFIX lib/x86)
+endif()
 
 FIND_LIBRARY(SDL2MIXER_LIBRARY
         NAMES SDL2_mixer
         HINTS
         $ENV{SDL2MIXERDIR}
         $ENV{SDL2DIR}
-        PATH_SUFFIXES lib64 lib
+        PATH_SUFFIXES lib ${VC_LIB_PATH_SUFFIX}
         PATHS
         ~/Library/Frameworks
         /Library/Frameworks
@@ -60,7 +71,18 @@ FIND_LIBRARY(SDL2MIXER_LIBRARY
         /opt/local
         /opt/csw
         /opt
+        ${SDL2_MIXER_PATH}
         )
+
+if(WIN32)
+     find_file(SDL2_MIXER_LIBRARY_SHARED
+        NAMES SDL2_mixer.dll
+        PATH_SUFFIXES lib ${VC_LIB_PATH_SUFFIX}
+        PATHS ${SDL2_MIXER_PATH}
+    )
+    get_filename_component(SDL2_MIXER_SHARED_PATH ${SDL2_MIXER_LIBRARY_SHARED} DIRECTORY)
+    set(SDL2_MIXER_SHARED_LIBS "${SDL2_MIXER_LIBRARY_SHARED}" "${SDL2_MIXER_SHARED_PATH}/optional/libogg-0.dll" "${SDL2_MIXER_SHARED_PATH}/optional/libwavpack-1.dll")
+endif(WIN32)
 
 SET(SDL2MIXER_FOUND "NO")
 IF(SDL2MIXER_LIBRARY AND SDL2MIXER_INCLUDE_DIR)

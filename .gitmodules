@@ -1,3 +1,4 @@
 [submodule "submodules/SimpleRenderEngine"]
 	path = submodules/SimpleRenderEngine
 	url = https://github.com/Chris-Carvelli/SimpleRenderEngine.git
+	branch = master

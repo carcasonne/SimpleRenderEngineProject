@@ -5,7 +5,8 @@
 #include "sre/Inspector.hpp"
 #include "glm/gtc/random.hpp"
 #include "glm/ext.hpp"
-#include "Box2D/Box2D.h"
+
+#include "box2d/box2d.h"
 
 using namespace sre;
 using namespace std;

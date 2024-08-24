@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Box2D/Common/b2Draw.h>
+#include <box2d/b2_draw.h>
 #include <vector>
 #include <glm/vec3.hpp>
 
