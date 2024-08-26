@@ -1,15 +1,17 @@
 # SimpleRenderEngine Projects
 
-This is a fork of SimpleRenderEngine including libraries and bindings to common game development libraries. (This includes SimpleRenderEngine dependencies)
-The goal of this project is be able to get started without spending time on setup.
+This is a fork of Morten Nobel-Jørgensen's SimpleRenderEngineProject, composed of a simple OpenGL renderer and a set of common dependencies for game development. This repo aim to introduce
+- [x] support for x64 architectures
+- [x] more streamlined dependency system
+- [ ] more modern and clear examples
 
-First clone the project (`git clone --recurse-submodules https://github.com/mortennobel/SimpleRenderEngineProject.git`). You can use of the examples as starting point.
+For more informations about SimpleRenderEngine, see
+https://github.com/Chris-Carvelli/SimpleRenderEngine
 
-For more information about SimpleRenderEngine see:
 
-https://github.com/mortennobel/SimpleRenderEngine
-
-# Setup
+## Setup
+- clone this repo
+- initialize submodules `git submodule update --init -- recursive`
 - open the fodler in VisualStudio
 - select `Manage Configurations` in the configuration list
 ![cmake_settings](media/cmake_settings.png)
@@ -18,5 +20,10 @@ https://github.com/mortennobel/SimpleRenderEngine
 - set the `SRE_LIBS_PATH` variable to the path containing the project's dependencies.
 ![srep_libs](media/srep_libs.png)
 
-# Current Known Limitations
+## Current Known Limitations
 - only Windows x64 supported at the time
+- Bullet physics not integrated yet
+
+## Credits
+- https://github.com/mortennobel/SimpleRenderEngine
+- https://github.com/mortennobel/SimpleRenderEngineProject
