@@ -66,7 +66,64 @@ message("424242: ${SGE_LIBRARIES}")
 message("424243: ${SGE_LIBRARIES_SHARED}")
 
 # build targets using sre
-SET(USE_SGE_PROJECT_EXAMPLES ON CACHE BOOL "Enable project examples for SGE")
-if (USE_SGE_PROJECT_EXAMPLES)
+SET(USE_SRE_PROJECT_EXAMPLES ON CACHE BOOL "Enable project examples for SGE")
+if (USE_SRE_PROJECT_EXAMPLES)
 add_subdirectory(project)
-endif(USE_SGE_PROJECT_EXAMPLES)
+endif(USE_SRE_PROJECT_EXAMPLES)
+
+# WIP mark advanced cmake variables (TODO move this in the appropriate files/sections)
+
+### Cmake
+mark_as_advanced(
+	CMAKE_INSTALL_PREFIX
+	CMAKE_MAKE_PROGRAM
+)
+
+### SRE
+mark_as_advanced(
+	SRE_INCLUDE
+	EXTRA_SOURCE_FILES
+	USE_OPENVR
+	USE_SRE_TEST_AND_UTILS
+)
+
+# SDL2
+mark_as_advanced(
+	SDL2_LIBRARY
+	SDL2_INCLUDE_DIR
+	EXTRA_INCLUDE
+)
+
+# SDL2_image
+mark_as_advanced(
+	SDL2_IMAGE_LIBRARY_SHARED
+	SDL2_IMAGE_LIBRARIES
+	SDL2_IMAGE_INCLUDE_DIRS
+)
+
+# glew
+mark_as_advanced(
+	GLEW_SOURCE
+	GLEW_LIBRARY
+	GLEW_INCLUDE_DIR
+)
+
+
+### SGE
+
+# SDL2_mixer
+mark_as_advanced(
+	SDL2MIXER_LIBRARY
+	SDL2MIXER_INCLUDE_DIR
+	SDL2_MIXER_LIBRARY_SHARED
+)
+
+# lua
+mark_as_advanced(
+	LUA_LIBRARY_SHARED
+)
+
+### misc
+mark_as_advanced(
+	SDL2MAIN_LIBRARY
+)

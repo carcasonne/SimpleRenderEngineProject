@@ -11,7 +11,7 @@ https://github.com/Chris-Carvelli/SimpleRenderEngine
 
 ## Setup
 - clone this repo
-- initialize submodules `git submodule update --init -- recursive`
+- initialize submodules `git submodule update --init --recursive`
 - open the fodler in VisualStudio
 - select `Manage Configurations` in the configuration list
 ![cmake_settings](media/cmake_settings.png)
