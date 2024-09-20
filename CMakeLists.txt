@@ -17,12 +17,23 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+
 # build sre library
 add_subdirectory(submodules/SimpleRenderEngine)
 get_directory_property(SRE_INCLUDE DIRECTORY submodules/SimpleRenderEngine DEFINITION SRE_INCLUDE)
 get_directory_property(SRE_LIBRARIES DIRECTORY submodules/SimpleRenderEngine DEFINITION SRE_LIBRARIES)
 get_directory_property(SRE_LIBRARIES_SHARED DIRECTORY submodules/SimpleRenderEngine DEFINITION SRE_LIBRARIES_SHARED)
 
+### TMP hack to get the correct SDL2 path without changing subrepo
+if(WIN32)
+     find_file(SDL2_LIBRARY_SHARED
+        NAMES SDL2.dll
+        PATH_SUFFIXES lib lib/x64 lib/x86
+        PATHS ${SDL2_SEARCH_PATH}
+    )
+endif(WIN32)
+set(SRE_LIBRARIES_SHARED ${SRE_LIBRARIES_SHARED} ${SDL2_LIBRARY_SHARED})
+### TMP hack end
 
 # custom, centralized path to dependencies
 # set(SGE_LIBS_PATH "" CACHE PATH "Path to the SimpleGameEngine libraries")
