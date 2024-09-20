@@ -20,6 +20,7 @@ https://github.com/Chris-Carvelli/SimpleRenderEngine
 ## Setup
 - clone this repo
 - initialize submodules `git submodule update --init --recursive`
+- download the list of dependencies from [learnIt](https://learnit.itu.dk/course/view.php?id=3023623)
 - open the fodler in VisualStudio
 - select `Manage Configurations` in the configuration list
 ![cmake_settings](media/cmake_settings.png)
@@ -27,6 +28,13 @@ https://github.com/Chris-Carvelli/SimpleRenderEngine
 ![target_architecture](media/target_architecture.png)
 - set the `SRE_LIBS_PATH` variable to the path containing the project's dependencies, then **RESTART VisualStudio**
 ![srep_libs](media/srep_libs.png)
+
+## Dependencies versions
+- glew 2.2.0
+- SDL2 2.30.0
+- SDL2_image 2.8.2
+- SDL2_mixer 2.8.0
+- box2d 2.4.2
 
 ## Current Known Limitations
 - only Windows x64 supported at the time
