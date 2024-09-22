@@ -24,17 +24,6 @@ get_directory_property(SRE_INCLUDE DIRECTORY submodules/SimpleRenderEngine DEFIN
 get_directory_property(SRE_LIBRARIES DIRECTORY submodules/SimpleRenderEngine DEFINITION SRE_LIBRARIES)
 get_directory_property(SRE_LIBRARIES_SHARED DIRECTORY submodules/SimpleRenderEngine DEFINITION SRE_LIBRARIES_SHARED)
 
-### TMP hack to get the correct SDL2 path without changing subrepo
-if(WIN32)
-     find_file(SDL2_LIBRARY_SHARED
-        NAMES SDL2.dll
-        PATH_SUFFIXES lib lib/x64 lib/x86
-        PATHS ${SDL2_SEARCH_PATH}
-    )
-endif(WIN32)
-set(SRE_LIBRARIES_SHARED ${SRE_LIBRARIES_SHARED} ${SDL2_LIBRARY_SHARED})
-### TMP hack end
-
 # custom, centralized path to dependencies
 # set(SGE_LIBS_PATH "" CACHE PATH "Path to the SimpleGameEngine libraries")
 set(SGE_LIBS_PATH ${SRE_LIBS_PATH})
@@ -101,6 +90,7 @@ mark_as_advanced(
 # SDL2
 mark_as_advanced(
 	SDL2_LIBRARY
+	SDL2_LIBRARY_SHARED
 	SDL2_INCLUDE_DIR
 	EXTRA_INCLUDE
 )
