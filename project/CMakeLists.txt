@@ -46,6 +46,9 @@ IF (WIN32)
 	#file(COPY ${SGE_LIBRARIES_SHARED} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Debug)
 	#file(COPY ${SGE_LIBRARIES_SHARED} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Release)
 	file(COPY ${SGE_LIBRARIES_SHARED} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+	# group this shit together
+    set_target_properties(SRE-lua-example PROPERTIES FOLDER "Examples")
+	set_target_properties(SRE-lua-example-lines PROPERTIES FOLDER "Examples")
 ENDIF(WIN32)
 
 add_subdirectory(platformer)
@@ -55,3 +58,15 @@ IF (USE_BULLET)
 	add_subdirectory(3D_Scenegraph)
 ENDIF(USE_BULLET)
 # add_subdirectory(BussIK)
+
+
+# group this shit together 
+IF (WIN32)
+	set_target_properties(SRE-node-editor PROPERTIES FOLDER "SimpleRenderEngine")
+	set_target_properties(SRE-node-editor PROPERTIES FOLDER "SimpleRenderEngine")
+	set_target_properties(SRE-box2d-example PROPERTIES FOLDER "Examples")
+	set_target_properties(SRE-box2d-platform-example PROPERTIES FOLDER "Examples")
+	set_target_properties(SRE-project PROPERTIES FOLDER "SimpleRenderEngine")
+	set_target_properties(SRE-sdl2_mixer-example PROPERTIES FOLDER "SimpleRenderEngine")
+	set_target_properties(SRE-scene-graph PROPERTIES FOLDER "SimpleRenderEngine")
+ENDIF(WIN32)

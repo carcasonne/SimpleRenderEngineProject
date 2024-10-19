@@ -18,4 +18,7 @@ IF (WIN32)
 
     # Set working directory to ${CMAKE_CURRENT_BINARY_DIR}/Debug
     set_target_properties(SRE-Platformer PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Debug)
+
+    # group this shit together
+    set_target_properties(SRE-Platformer PROPERTIES FOLDER "Examples/Games")
 ENDIF(WIN32)

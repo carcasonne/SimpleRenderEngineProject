@@ -15,4 +15,5 @@ IF (WIN32)
 
     # Set working directory to ${CMAKE_CURRENT_BINARY_DIR}/Debug
     set_target_properties(SRE-Gui PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Debug)
+    set_target_properties(SRE-Gui PROPERTIES FOLDER "SimpleRenderEngine")
 ENDIF(WIN32)

@@ -17,6 +17,7 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 # build sre library
 add_subdirectory(submodules/SimpleRenderEngine)
@@ -128,3 +129,5 @@ mark_as_advanced(
 mark_as_advanced(
 	SDL2MAIN_LIBRARY
 )
+
+add_subdirectory(GameProgramming24/Exercise4)

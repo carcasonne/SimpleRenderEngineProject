@@ -18,4 +18,7 @@ IF (WIN32)
 
     # Set working directory to ${CMAKE_CURRENT_BINARY_DIR}/Debug
     set_target_properties(SRE-ParticleSystem PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Debug)
+
+    # group this shit together
+    set_target_properties(SRE-ParticleSystem PROPERTIES FOLDER "SimpleRenderEngine")
 ENDIF(WIN32)
