@@ -19,6 +19,11 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
+# pray to god
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/submodules/SimpleRenderEngine/cmake")
+find_package(SDL2 REQUIRED)
+find_package(SDL2_IMAGE REQUIRED)
+
 # build sre library
 add_subdirectory(submodules/SimpleRenderEngine)
 get_directory_property(SRE_INCLUDE DIRECTORY submodules/SimpleRenderEngine DEFINITION SRE_INCLUDE)
@@ -60,7 +65,15 @@ include_directories(${SRE_INCLUDE})
 set(SGE_LIBRARIES SRE ${SRE_LIBRARIES} ${SDL2MIXER_LIBRARY} ${BOX2D_LIBRARY} ${LUA_LIBRARY})
 
 # prepare dynamic library list
-set(SGE_LIBRARIES_SHARED ${SRE_LIBRARIES_SHARED} ${SDL2_MIXER_SHARED_LIBS} ${LUA_LIBRARY_SHARED})
+set(SGE_LIBRARIES_SHARED 
+    ${SRE_LIBRARIES_SHARED}          # whatever tf sre's passing up
+    ${SDL2_LIBRARY_SHARED}           # in case cmake actually finds stuff
+    ${SDL2_IMAGE_SHARED_LIBS}        # more auto-found stuff
+    "${SGE_LIBS_PATH}/SDL2/lib/x64/SDL2.dll"          # the REAL goods
+    "${SGE_LIBS_PATH}/SDL2_image/lib/x64/SDL2_image.dll"  # insurance policy
+    ${SDL2_MIXER_SHARED_LIBS}        
+    ${LUA_LIBRARY_SHARED}            
+)
 
 message("424241: ${SRE_INCLUDE}")
 message("424242: ${SGE_LIBRARIES}")
