@@ -16,6 +16,7 @@ namespace MyEngine {
 	public:
 		glm::vec2 position;
 		float rotation;
+		bool warp;
 
 		void Init();
 		void Update(float);

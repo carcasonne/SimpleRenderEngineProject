@@ -54,6 +54,8 @@ namespace MyEngine {
 		renderPass.draw(spriteBatch);
 	}
 
+	// Returns a raw pointer rather than the actual shared pointer
+	// This is to prevent the user from deleting the object
 	GameObject* Engine::CreateGameObject(std::string name) {
 		auto ret = std::make_shared<GameObject>();
 		ret->_self = ret;

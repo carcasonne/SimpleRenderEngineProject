@@ -2,7 +2,7 @@
 
 file(GLOB_RECURSE Exercise4.Game-src "*.h" "*.cpp")
 
-add_executable(Exercise4.Game ${Exercise4.Game-src})
+add_executable(Exercise4.Game ${Exercise4.Game-src} "Game/PlayerController.h" "Game/PlayerController.cpp")
 
 target_include_directories(Exercise4.Game PUBLIC ${MYENGINE_INCLUDE_DIR})
 
