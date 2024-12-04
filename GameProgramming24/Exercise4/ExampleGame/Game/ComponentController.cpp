@@ -2,7 +2,7 @@
 
 #include "Engine/MyEngine.h"
 
-namespace ExampleGame {
+namespace Game {
 	void ComponentController::Init() {
 	}
 

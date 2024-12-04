@@ -1,7 +1,7 @@
 #include "ComponentRendererSprite.h"
 #include "Engine/MyEngine.h"
 
-namespace ExampleGame {
+namespace Game {
 	static const std::array<glm::vec2, 5> WRAP_OFFSETS = { {
 		{0, 0},      // og position 
 		{0, -1},     // below

@@ -4,13 +4,14 @@
 #include "Engine/MyEngine.h"
 
 #include "Game/ComponentController.h"
+#include "Game/PlayerController.h"
 #include "Game/ComponentRendererSprite.h"
 
 void InitGame();
 void ProcessEvents(SDL_Event& event);
 void Update(float deltaTime);
 void Render();
-MyEngine::GameObject* CreateObject(std::string name, std::string spriteName, std::shared_ptr<sre::SpriteAtlas> atlas);
+MyEngine::GameObject* CreatePlayer(std::string name, std::string spriteName, std::shared_ptr<sre::SpriteAtlas> atlas);
 
 MyEngine::Engine engine;
 
@@ -32,7 +33,7 @@ int main() {
 
 	atlas = sre::SpriteAtlas::create("data/spritesheet.json", "data/spritesheet.png");
 
-	playerObject = CreateObject("player", "playerShip1_blue.png", atlas);
+	playerObject = CreatePlayer("player", "playerShip1_blue.png", atlas);
 
 	engine.Init();
 
@@ -51,10 +52,10 @@ void Render() {
 	engine.Render();
 }
 
-MyEngine::GameObject* CreateObject(std::string name, std::string spriteName, std::shared_ptr<sre::SpriteAtlas> atlas) {
+MyEngine::GameObject* CreatePlayer(std::string name, std::string spriteName, std::shared_ptr<sre::SpriteAtlas> atlas) {
 	auto playerObject = engine.CreateGameObject(name);
-	auto componentController = std::shared_ptr<ExampleGame::ComponentController>(new ExampleGame::ComponentController());
-	auto componentRenderer = std::make_shared<ExampleGame::ComponentRendererSprite>();
+	auto componentController = std::shared_ptr<Game::PlayerController>(new Game::PlayerController());
+	auto componentRenderer = std::make_shared<Game::ComponentRendererSprite>();
 	playerObject->AddComponent(componentController);
 	playerObject->AddComponent(componentRenderer);
 	componentRenderer->sprite = atlas->get(spriteName);
