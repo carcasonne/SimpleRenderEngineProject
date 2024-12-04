@@ -8,7 +8,6 @@ namespace Game {
 		const float MovementSpeed = (std::rand() % 5) + 1;
 		const float MovementBase = 30;
 		const glm::vec2 MovementDirection = glm::vec2(0, -1);
-		const float Radius;
 		bool IsMoving = false;
 
 		// makes it possible to only call GetInstance once, guess its a memory vs. computation tradeoff
@@ -18,12 +17,6 @@ namespace Game {
 	public:
 		glm::vec2 position;
 		float rotation;
-
-		AsteroidController(float radius)
-			: MyEngine::Component()
-			, rotation(0.0f)
-			, Radius(radius)
-		{}
 
 		void Init() override;
 		void Update(float) override;

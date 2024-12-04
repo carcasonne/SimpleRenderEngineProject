@@ -1,4 +1,5 @@
 #include "PlayerController.h"
+#include "LaserController.h"
 #include "ComponentRendererSprite.h"
 
 #include "Engine/MyEngine.h"
@@ -39,6 +40,19 @@ namespace Game {
 				RotationAmount = isKeyDown ? -1 : 0;
 				break;
 			case SDLK_SPACE:
+				if (isKeyDown) {
+					auto laserObject = engine->CreateGameObject("Laser");
+					auto laserController = std::shared_ptr<LaserController>(new LaserController());
+					auto laserRenderer = std::make_shared<ComponentRendererSprite>();
+					laserObject->AddComponent(laserController);
+					laserObject->AddComponent(laserRenderer);
+					laserRenderer->sprite = engine->atlas->get("laserBlue01.png");
+
+					laserObject->position = parent->position;
+					laserObject->rotation = parent->rotation;
+					laserObject->Init();
+				}
+
 				break;
 			default:
 				break;

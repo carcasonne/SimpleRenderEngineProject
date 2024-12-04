@@ -8,6 +8,9 @@
 #include "Game/AsteroidController.h"
 #include "Game/ComponentRendererSprite.h"
 
+#include <iostream>
+#include <random>
+
 void InitGame();
 void ProcessEvents(SDL_Event& event);
 void Update(float deltaTime);
@@ -31,9 +34,12 @@ struct AsteroidType {
 
 static const AsteroidType ASTEROID_TYPES[] = {
 	{20, "meteorGrey_small1.png"},
-	{35, "meteorGrey_med2.png"},
-	{60, "meteorGrey_big3.png"}
+	{35, "meteorGrey_med1.png"},
+	{60, "meteorGrey_big1.png"}
 };
+
+std::random_device rd;
+std::mt19937 generator(rd());
 
 int main() {
 	renderer.frameRender = Render;
@@ -45,14 +51,16 @@ int main() {
 	camera.setWindowCoordinates();
 
 	atlas = sre::SpriteAtlas::create("data/spritesheet.json", "data/spritesheet.png");
+	engine.atlas = atlas;
 
 	playerObject = CreatePlayer("player", "playerShip1_blue.png", atlas);
 
 	float asteroidRadi[] = { 20, 35, 60};
-	std::string asteroidSprites[] = { "meteorGrey_small1.png", "meteorGrey_med2.png", "meteorGrey_big3.png" };
+	std::uniform_int_distribution<> distr(0, 2);
 	for (int i = 0; i < 5; i++) {
-		auto asteroidType = ASTEROID_TYPES[rand() % 3];
-		auto asteroidObject = CreateAsteroid("asteroid" + std::to_string(i), ASTEROID_TYPES->spriteName, atlas, ASTEROID_TYPES->radius);
+		auto asteroidType = ASTEROID_TYPES[distr(generator)];
+		auto asteroidObject = CreateAsteroid("asteroid" + std::to_string(i), asteroidType.spriteName, atlas, asteroidType.radius);
+		std::cout << "asteroid " << i << " | sprite: " << asteroidType.spriteName << " | radius: " << asteroidType.radius << "\n";
 	}
 
 	engine.Init();
@@ -83,7 +91,8 @@ MyEngine::GameObject* CreatePlayer(std::string name, std::string spriteName, std
 
 MyEngine::GameObject* CreateAsteroid(std::string name, std::string spriteName, std::shared_ptr<sre::SpriteAtlas> atlas, float radius) {
 	auto asteroidObject = engine.CreateGameObject(name);
-	auto componentController = std::shared_ptr<Game::AsteroidController>(new Game::AsteroidController(radius));
+	asteroidObject->radius = radius;
+	auto componentController = std::shared_ptr<Game::AsteroidController>(new Game::AsteroidController());
 	auto componentRenderer = std::make_shared<Game::ComponentRendererSprite>();
 	asteroidObject->AddComponent(componentController);
 	asteroidObject->AddComponent(componentRenderer);

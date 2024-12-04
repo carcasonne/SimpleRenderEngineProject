@@ -17,6 +17,8 @@ namespace MyEngine {
 		glm::vec2 position;
 		float rotation;
 		bool warp;
+		bool kill;
+		float radius;
 
 		void Init();
 		void Update(float);
@@ -25,6 +27,11 @@ namespace MyEngine {
 
 		void AddChild(std::shared_ptr<GameObject>);
 		void AddComponent(std::shared_ptr<Component>);
+
+		bool collidesWith(std::shared_ptr<GameObject>);
+
+		bool operator == (const GameObject& o) const { return _name == o._name; }
+		bool operator != (const GameObject& o) const { return !operator==(o); }
 
 		std::string GetName();
 		void SetName(std::string);

@@ -18,6 +18,7 @@ namespace MyEngine {
 	public:
 		static Engine* GetInstance() { return _instance; }
 	public:
+		std::shared_ptr<sre::SpriteAtlas> atlas;
 		const glm::vec2 WIN_SIZE = glm::vec2(800, 600);
 		const std::chrono::duration<double> MAX_FRAME_TIME = std::chrono::duration<double>(1 / 60.0);
 

@@ -20,8 +20,22 @@ namespace MyEngine {
 		for (auto& component : _components)
 			component->Update(deltaTime);
 
+		_children.remove_if([](auto child)
+			{
+				return (child->kill);
+			});
+
 		for (auto& child : _children)
 			child->Update(deltaTime);
+		
+		for (auto& childA : _children) {
+			for (auto& childB : _children) {
+				if (childA->collidesWith(childB)) {
+					childA->kill = true;
+					childB->kill = true;
+				}
+			}
+		}
 	}
 
 	void GameObject::Render(sre::SpriteBatch::SpriteBatchBuilder& spriteBatchBuilder) {
@@ -47,6 +61,15 @@ namespace MyEngine {
 	void GameObject::AddComponent(std::shared_ptr<Component> p_component) {
 		p_component->SetGameObject(_self);
 		_components.push_back(p_component);
+	}
+
+	bool GameObject::collidesWith(std::shared_ptr<GameObject> p_object) {
+		if (_name == p_object->_name) return false;
+		float distance = sqrt(pow(abs(p_object->position.x - position.x), 2) + pow(abs(p_object->position.y - position.y), 2));
+		if (distance <= (p_object->radius + radius)) {
+			std::cout << "HIT DETECTED\n";
+		}
+		return distance <= (p_object->radius + radius);
 	}
 
 	std::string GameObject::GetName() {

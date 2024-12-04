@@ -7,6 +7,7 @@ namespace Game {
 		const float MovementSpeed = 5;
 		const float MovementBase = 30;
 		const float RotationSpeed = 100;
+		const float radius = 30;
 		float RotationAmount = 0;
 		bool IsMoving = false;
 

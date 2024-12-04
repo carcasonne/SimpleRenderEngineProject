@@ -14,8 +14,13 @@ namespace Game {
 	}
 
 	void AsteroidController::Update(float deltaTime) {
+		auto screenSize = engine->GetScreenSize();
+
 		parent->rotation += RotationSpeed * deltaTime;
-		parent->position = parent->position + MovementSpeed * MovementDirection * MovementBase * deltaTime;
+
+		auto newPosition = parent->position + MovementDirection * MovementBase * MovementSpeed * deltaTime;
+		newPosition = glm::mod(newPosition + screenSize, screenSize); // wrap around screen
+		parent->position = newPosition;
 	}
 
 	void AsteroidController::KeyEvent(SDL_Event& e) {
