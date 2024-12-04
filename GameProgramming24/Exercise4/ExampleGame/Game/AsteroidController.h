@@ -4,7 +4,10 @@
 
 namespace Game {
 	class AsteroidController : public MyEngine::Component {
-		const float RotationSpeed = 100;
+		const float RotationSpeed = (std::rand() % 100) + 50;
+		const float MovementSpeed = (std::rand() % 5) + 1;
+		const float MovementBase = 30;
+		const glm::vec2 MovementDirection = glm::vec2(0, -1);
 		const float Radius;
 		bool IsMoving = false;
 
